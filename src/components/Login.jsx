@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../redux/userSlice";
 import { useDispatch } from "react-redux";
+import { baseurl } from "../utils/constants.js"
 const Login = () => {
 
     const [isLogin, setIsLogin] = useState(true);
@@ -11,26 +12,30 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const backendurl = "http://localhost:5000";
-const dispatch=useDispatch();
+    // const backendurl = "http://localhost:5000";
+    console.log(import.meta.env);
+
+    console.log(baseurl);
+
+    const dispatch = useDispatch();
     const handleLogin = async () => {
 
         try {
 
             const res = await axios.post(
-                `${backendurl}/login`,
+                `${baseurl}/login`,
                 {
                     email,
                     password
                 },
                 {
-                    withCredentials:true
+                    withCredentials: true
                 }
             );
 
             console.log(res.data);
             console.log(res.data.user.name);
-            
+
             dispatch(setUser(res.data.user));
             alert("Login successful");
             navigate("/movies");
@@ -49,14 +54,14 @@ const dispatch=useDispatch();
         try {
 
             const res = await axios.post(
-                `${backendurl}/register`,
+                `${baseurl}/register`,
                 {
                     name,
                     email,
                     password
                 },
                 {
-                    withCredentials:true
+                    withCredentials: true
                 }
             );
 

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../redux/userSlice";
 import { setUser } from "../redux/userSlice";
 import { useEffect } from "react";
+import {baseurl} from "../utils/constants.js"
 const SearchMovie = () => {
 
   const [search, setSearch] = useState("");
@@ -24,7 +25,7 @@ const SearchMovie = () => {
     try {
 
       const res = await axios.get(
-        `http://localhost:5000/movies/search?q=${value}`
+        `${baseurl}/movies/search?q=${value}`
       );
 
       setMovies(res.data);
@@ -40,7 +41,7 @@ const SearchMovie = () => {
       try {
 
         const res = await axios.get(
-          "http://localhost:5000/me",
+          `${baseurl}/me`,
           {
             withCredentials: true
           }
