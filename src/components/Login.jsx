@@ -45,7 +45,9 @@ const Login = () => {
 
             console.log(error);
 
-            alert(error.response.data.message);
+            alert(error.response?.data?.message ||
+                error.message ||
+                "Network Error");
         }
     };
 
