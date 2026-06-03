@@ -1,6 +1,8 @@
 import './App.css'
 import Login from './components/Login'
+import MoviesDescription from './components/MoviesDescription';
 import SearchMovie from './components/searchMovies'
+import Seats from "./components/Seats"
 import {
   Routes,
   Route
@@ -17,6 +19,12 @@ function App() {
       <Route
       path='/movies'
       element={<SearchMovie/>}/>
+    <Route
+      path='/moviesDescription/:moviename'
+      element={<MoviesDescription/>}/>
+      <Route
+      path='/seat'
+      element={<Seats/>}/>
     </Routes>
     </>
   )
