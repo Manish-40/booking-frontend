@@ -5,6 +5,7 @@ import { logoutUser } from "../redux/userSlice";
 import { setUser } from "../redux/userSlice";
 import { useEffect } from "react";
 import {baseurl} from "../utils/constants.js"
+import { Link } from "react-router-dom";
 const SearchMovie = () => {
 
   const [search, setSearch] = useState("");
@@ -118,13 +119,14 @@ const SearchMovie = () => {
   <div className="px-4 md:px-10 py-8">
 
     <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center md:text-left">
-      Search Results
+      Recommended Movies
     </h1>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
       {
         movies.map((movie) => (
+          <Link to={"/moviesDescription/"+movie.title}>
           <div
             key={movie.id}
             className="border border-gray-300 rounded-2xl p-5 shadow-lg bg-white hover:scale-105 duration-300"
@@ -133,12 +135,8 @@ const SearchMovie = () => {
             <h3 className="text-xl md:text-2xl font-bold">
               {movie.title}
             </h3>
-
-            <p className="text-base md:text-lg text-gray-700 mt-3">
-              Price: ₹{movie.price}
-            </p>
-
           </div>
+          </Link>
         ))
       }
 
